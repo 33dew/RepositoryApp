@@ -1,13 +1,8 @@
-import { useState } from 'react'
-import { Button } from "@mantine/core";
+import React from "react";
+import HomePage from "./pages/home/homePages";
 
-function App() {
-  const [count, setCount] = useState(0)
-  return (
-    <div>
-        <Button onClick={() => setCount(count + 1)}>Count: {count}</Button>
-    </div>
-  )
-}
+const App = () => (
+  <HomePage />
+);
 
-export default App
+export default App;

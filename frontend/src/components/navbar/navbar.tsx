@@ -1,57 +1,86 @@
-import React from 'react';
-import { Container, Header, Text } from '@mantine/core';
-import logo from '../../assets/images/logo-black.svg'
+import React from "react";
+import styled from "styled-components";
+import { logo } from "../../assets/images";
 
-const NavbarComponent = () => {
+const Navigation: React.FC = () => {
+
   return (
-    <Header
-      height={60}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingLeft: 20,
-        paddingRight: 20,
-        backgroundColor: '#ffffff',
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <img src={logo} alt="ReservEase" style={{ height: 300 }} />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <ul style={{ listStyle: 'none', display: 'flex' }}>
-          <li style={{ marginRight: 100 }}>
-            <a href="#flights" style={{ textDecoration: 'none', color: '#000000' }}>
-              Loty
-            </a>
-          </li>
-          <li style={{ marginRight: 100 }}>
-            <a href="#hotels" style={{ textDecoration: 'none', color: '#000000' }}>
-              Hotele
-            </a>
-          </li>
-          <li style={{ marginRight: 100 }}>
-            <a href="#cars" style={{ textDecoration: 'none', color: '#000000' }}>
-              Samochody
-            </a>
-          </li>
-          <li style={{ marginRight: 200 }}>
-            <a href="#contact" style={{ textDecoration: 'none', color: '#000000' }}>
-              Kontakt
-            </a>
-          </li>
-        </ul>
-        <div style={{ display: 'flex', alignItems: 'center', marginLeft: 20 }}>
-          <button style={{ backgroundColor: '#fff', padding: '10px 20px', borderRadius: 20, border: '1px solid #0072C6', marginRight: 10 }}>
-            Zaloguj się
-          </button>
-          <button style={{ backgroundColor: '#0072C6', padding: '10px 20px', borderRadius: 20, border: 'none', color: '#fff' }}>
-            Zarejestruj się
-          </button>
-        </div>
-      </div>
-    </Header>
+    <Container>
+      <Logo src={logo} alt="logo" />
+      <Nav>
+        <NavLink href="#">Loty</NavLink>
+        <NavLink href="#">Hotele</NavLink>
+        <NavLink href="#">Kontakt</NavLink>
+      </Nav>
+      <ButtonContainer>
+        <LoginButton>Zaloguj</LoginButton>
+        <RegisterButton>Zarejestruj</RegisterButton>
+      </ButtonContainer>
+    </Container>
   );
 };
 
-export default NavbarComponent;
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+`;
+const Nav = styled.nav`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+`;
+const NavLink = styled.a`
+  color: #000000;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-decoration: none;
+  margin-right: 100px;
+
+  &:hover {
+    color: #828282;
+  }
+`;
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const LoginButton = styled.button`
+  color: #000000;
+  background-color: #fff;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  margin-right: 20px;
+
+  &:hover {
+    color: #2c3e50;
+  }
+`;
+const RegisterButton = styled.button`
+  background-color: #2980b9;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  padding: 3px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: #2c3e50;
+  }
+`;
+const Logo = styled.img`
+  width: 10em;
+`;
+
+export default Navigation;

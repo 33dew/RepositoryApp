@@ -1,15 +1,22 @@
-import React from "react";
-import SectionComponent from "../../components/baner/baner";
-import NavbarComponent from "../../components/navbar/navbar";
+import React from 'react';
+import FlightBookingForm from '../../components/baner/baner';
+import { FlightBookingFormData } from '../../components/baner/baner.types';
+import Footer from '../../components/footer/footer';
+import Navigation from '../../components/navbar/navbar';
 
-const HomePages = () => {
-    return (
-        <>
-        <NavbarComponent />
-        <SectionComponent />
-        </>
-    )
-}
+const HomePage: React.FC = () => {
+  const handleFlightBookingSubmit = (formData: FlightBookingFormData) => {
+    console.log(formData);
+    // Tu można wykonać żądanie HTTP do API, aby sprawdzić dostępność lotów dla podanych danych.
+  };
 
-export default HomePages
+  return (
+    <>
+        <Navigation />
+        <FlightBookingForm onSubmit={handleFlightBookingSubmit} />
+        <Footer />
+    </>
+  );
+};
 
+export default HomePage;
